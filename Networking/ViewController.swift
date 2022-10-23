@@ -47,6 +47,8 @@ class ViewController: UIViewController {
                       response.statusCode == 200,
                       let data = data,
                       let dataAsString = String(data: data, encoding: .utf8) {
+                let posts = try? JSONDecoder().decode([Post].self, from: data)
+                print(posts)
                 print("response \(response)")
                 print("statusCode: \(response.statusCode)")
                 print("data: \(dataAsString)")
