@@ -9,11 +9,10 @@ import Foundation
 
 class NetworkManager {
 
-    private func getAllPosts(_ complitionHandler: @escaping ([Post]) -> ()) {
+    func getAllPosts(_ complitionHandler: @escaping ([Post]) -> ()) {
 
-        guard let url = URL(string: "http://jsonplaceholder.typicode.com/posts") else { return }
+        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
-
             if let error = error {
                 print("error: \(error.localizedDescription)")
             } else if let response = response as? HTTPURLResponse,

@@ -58,16 +58,40 @@
 		D9BB1B4F2905BD9B004D0381 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				D9BB1B682905E4C4004D0381 /* App */,
+				D9BB1B6A2905E5E2004D0381 /* Sources */,
+				D9BB1B692905E5D2004D0381 /* Resources */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		D9BB1B682905E4C4004D0381 /* App */ = {
+			isa = PBXGroup;
+			children = (
 				D9BB1B502905BD9B004D0381 /* AppDelegate.swift */,
 				D9BB1B522905BD9B004D0381 /* SceneDelegate.swift */,
-				D9BB1B642905D72D004D0381 /* Post.swift */,
-				D9BB1B542905BD9B004D0381 /* ViewController.swift */,
-				D9BB1B662905E04D004D0381 /* NetworkManager.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D9BB1B692905E5D2004D0381 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				D9BB1B592905BD9D004D0381 /* Assets.xcassets */,
 				D9BB1B5B2905BD9D004D0381 /* LaunchScreen.storyboard */,
 				D9BB1B5E2905BD9D004D0381 /* Info.plist */,
 			);
-			path = Networking;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D9BB1B6A2905E5E2004D0381 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				D9BB1B642905D72D004D0381 /* Post.swift */,
+				D9BB1B542905BD9B004D0381 /* ViewController.swift */,
+				D9BB1B662905E04D004D0381 /* NetworkManager.swift */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
