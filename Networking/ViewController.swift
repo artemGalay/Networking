@@ -47,7 +47,7 @@ class ViewController: UIViewController {
                       response.statusCode == 200,
                       let data = data,
                       let dataAsString = String(data: data, encoding: .utf8) {
-                print(response)
+                print("response \(response)")
                 print("statusCode: \(response.statusCode)")
                 print("data: \(dataAsString)")
             }
