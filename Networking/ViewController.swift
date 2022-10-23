@@ -17,6 +17,15 @@ class ViewController: UIViewController {
         return button
     }()
 
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Tap to download post"
+        label.textColor = .red
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupHierarchy()
@@ -25,6 +34,7 @@ class ViewController: UIViewController {
 
     private func setupHierarchy() {
         view.addSubview(downloadPostsButton)
+        view.addSubview(titleLabel)
     }
 
     private func setupLayout() {
@@ -32,13 +42,16 @@ class ViewController: UIViewController {
             downloadPostsButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             downloadPostsButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             downloadPostsButton.widthAnchor.constraint(equalToConstant: 200),
-            downloadPostsButton.heightAnchor.constraint(equalToConstant: 150)
+            downloadPostsButton.heightAnchor.constraint(equalToConstant: 150),
+
+            titleLabel.bottomAnchor.constraint(equalTo: downloadPostsButton.topAnchor, constant: -20),
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
 
     @objc func downloadPostsTapped() {
 
-        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts") else { return }
+        guard let url = URL(string: "http://jsonplaceholder.typicode.com/posts") else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
 
             if let error = error {
@@ -48,6 +61,9 @@ class ViewController: UIViewController {
                       let data = data,
                       let dataAsString = String(data: data, encoding: .utf8) {
                 let posts = try? JSONDecoder().decode([Post].self, from: data)
+                DispatchQueue.main.async {
+                    self.titleLabel.text = "Post has been downloaded"
+                }
                 print(posts)
                 print("response \(response)")
                 print("statusCode: \(response.statusCode)")
