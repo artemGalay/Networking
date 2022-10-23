@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var networkManager = NetworkManager()
+
     private lazy var downloadPostsButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "download")?.withRenderingMode(.alwaysOriginal), for: .normal)
@@ -50,7 +52,10 @@ class ViewController: UIViewController {
     }
 
     @objc func downloadPostsTapped() {
-
-       
+        networkManager.getAllPosts { (posts) in
+            DispatchQueue.main.async {
+                self.titleLabel.text = "Posts has been downloaded!"
+            }
+        }
     }
 }
